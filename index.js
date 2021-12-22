@@ -144,6 +144,8 @@ function spawnEnemies() {
 
 let animationId;
 let score = 0;
+const audio = new Audio();
+audio.src = "ball_collision.mp3";
 
 function animate() {
   animationId = requestAnimationFrame(animate);
@@ -170,6 +172,7 @@ function animate() {
       cancelAnimationFrame(animationId);
       modalEl.style.display = "flex";
       finalScore.innerHTML = score;
+      audio.play();
     }
     projectiles.forEach((projectile, j) => {
       const distance = Math.hypot(
@@ -177,6 +180,7 @@ function animate() {
         projectile.y - enemy.y
       );
       if (distance - projectile.radius - enemy.radius < 1) {
+        audio.play();
         for (let i = 0; i < enemy.radius * 2; i++) {
           const particle = new Particle(
             projectile.x,
