@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Game</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="score">
+      <span>Score: </span>
+      <span id="scoreEl">0</span>
+    </div>
+    <div class="container" id="modalEl">
+      <div class="modal">
+        <h1 id="finalScore">0</h1>
+        <p>Points</p>
+        <div class="btn">
+          <button id="startGameBtn">Start Game</button>
+        </div>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/gsap.min.js"
+      integrity="sha512-gWlyRVDsJvp5kesJt4cSdPPLZIBdln/uSwzYgUicQcbTgRNQE4QhP5KUBIYlLYLkiKIQiuD7KUMHzqGNW/D2bQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="index.js"></script>
+  </body>
+</html>
