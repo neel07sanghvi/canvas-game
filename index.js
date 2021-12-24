@@ -58,6 +58,8 @@ class Enemy {
     this.radius = radius;
     this.color = color;
     this.velocity = velocity;
+    this.speed = 0.5;
+    this.flag = 1;
   }
   draw() {
     ctx.beginPath();
@@ -67,8 +69,42 @@ class Enemy {
   }
   update() {
     this.draw();
-    this.x += this.velocity.x;
-    this.y += this.velocity.y;
+    this.x += this.velocity.x * this.speed;
+    this.y += this.velocity.y * this.speed;
+    if (score > 500 && this.flag && score < 1000) {
+      this.speed += 0.05;
+      this.flag = 0;
+    } else if (score > 1000 && !this.flag && score < 2000) {
+      this.speed += 0.05;
+      this.flag = 1;
+    } else if (score > 2000 && this.flag && score < 3000) {
+      this.speed += 0.07;
+      this.flag = 0;
+    } else if (score > 3000 && !this.flag && score < 4000) {
+      this.speed += 0.07;
+      this.flag = 1;
+    } else if (score > 4000 && this.flag && score < 5000) {
+      this.speed += 0.1;
+      this.flag = 0;
+    } else if (score > 5000 && !this.flag && score < 7000) {
+      this.speed += 0.1;
+      this.flag = 1;
+    } else if (score > 7000 && this.flag && score < 10000) {
+      this.speed += 0.3;
+      this.flag = 0;
+    } else if (score > 10000 && !this.flag && score < 15000) {
+      this.speed += 0.5;
+      this.flag = 1;
+    } else if (score > 15000 && this.flag && score < 20000) {
+      this.speed += 0.7;
+      this.flag = 0;
+    } else if (score > 20000 && !this.flag && score < 30000) {
+      this.speed += 0.7;
+      this.flag = 1;
+    } else if (score > 30000 && this.flag) {
+      this.speed += 1;
+      this.flag = 0;
+    }
   }
 }
 
@@ -108,6 +144,7 @@ let player = new Player(x, y, 10, "white");
 let projectiles = [];
 let enimies = [];
 let particles = [];
+let spawnTime = 1000;
 
 function initialize() {
   player = new Player(x, y, 10, "white");
@@ -139,7 +176,7 @@ function spawnEnemies() {
     };
     const enemy = new Enemy(x, y, radius, color, velocity);
     enimies.push(enemy);
-  }, 1000);
+  }, spawnTime);
 }
 
 let animationId;
